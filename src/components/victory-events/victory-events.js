@@ -1,7 +1,7 @@
-import keys from "lodash/keys";
-import assign from "lodash/assign";
+import { assign, keys } from "lodash";
 import React, { PropTypes } from "react";
-import Events from "../../helpers/Events";
+import { PropTypes as CustomPropTypes } from "victory-core";
+import Events from "../../helpers/events";
 
 export default class VictoryEvents extends React.Component {
   static role = "event-wrapper";
@@ -16,7 +16,11 @@ export default class VictoryEvents extends React.Component {
       React.PropTypes.node
     ]),
     events: PropTypes.object,
-    eventKey: PropTypes.string
+    eventKey: PropTypes.oneOfType([
+      PropTypes.func,
+      CustomPropTypes.allOfType([CustomPropTypes.integer, CustomPropTypes.nonNegative]),
+      PropTypes.string
+    ]),
   };
 
   constructor() {

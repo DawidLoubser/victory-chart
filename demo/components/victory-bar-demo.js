@@ -232,8 +232,8 @@ export default class App extends React.Component {
               events={{
                 data: {
                   onClick: () => {
-                    console.log("SHARED EVENT")
-                    return {data: {style: {fill: "cyan", width: 25}}};
+                    
+                    return {eventKey: "thisOne", datum: {label: "yo"}, style: {fill: "cyan"}}
                   }
                 }
               }}
@@ -245,12 +245,11 @@ export default class App extends React.Component {
                 data={[{x: "a", y: 2}, {x: "b", y: 3}, {x: "c", y: 4}]}
               />
               <VictoryBar
-                data={[{x: "a", y: 2}, {x: "b", y: 3}, {x: "c", y: 4}]}
+                data={[{x: "a", y: 2}, {x: "b", y: 3}, {x: "c", y: 4, eventKey: "thisOne"}]}
                 events={{
                   data: {
                     onClick: () => {
-                      console.log("SINGLE EVENT ")
-                      return {data: {style: {fill: "blue"}}};
+                      return {mutation: {style: {fill: "blue"}}}
                     }
                   }
                 }}
